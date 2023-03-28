@@ -7,7 +7,9 @@ function solution(X, Y) {
         let tempY = Y.filter(a=>String(i)===a).length;
         friend +=String(i).repeat(Math.min(tempX,tempY))
     }
-if(friend === "") return "-1"
+    
+    if(friend === "") return "-1"
+    
     if(Number(friend)===0) return "0"
     
     return friend.split("").sort((a,b)=>b-a).join("")
