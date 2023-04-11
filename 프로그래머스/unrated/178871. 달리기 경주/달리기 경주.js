@@ -1,5 +1,4 @@
 function solution(players, callings) {
-    var answer = [];
     let map1 = {};
     players.map((e,idx)=>map1[e] = idx)
     for(let i=0; i<callings.length; i++){
