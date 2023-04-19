@@ -7,5 +7,5 @@ function solution(n) {
         }
     }
     
-    return answer.filter((e,idx)=>answer.indexOf(e)===idx);
+    return [...new Set(answer)];
 }
