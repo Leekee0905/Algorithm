@@ -10,5 +10,5 @@ function solution(n) {
         }
     }
 
-    return result[n] % 1234567;
+    return result[n];
 }
