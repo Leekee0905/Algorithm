@@ -1,5 +1,6 @@
 function solution(s) {
     let answer = [];
+    let set = new Set()
     const newarr = s.replace("{{", '').replace("}}",'').split('},{').map(e=>e.split(','))
     newarr.sort((a,b)=>{
         if(a.length>b.length){
@@ -9,20 +10,10 @@ function solution(s) {
     })
 
     answer.push(parseInt(newarr[0][0]))
-
-    const getNumber = (set, answer) => {
-        for(let i=0; i<set.length; i++){
-            for(const number of answer){
-                set = set.filter(e=>parseInt(e) !== number)
-            }
+    for(const arr of newarr){
+        for(const num of arr){
+            set.add(parseInt(num))
         }
-        return parseInt(set[0])
     }
-    
-    for(let i=1; i<newarr.length; i++){
-        let num = getNumber(newarr[i],answer)
-        answer.push(num)
-    }
-
-    return answer;
+    return Array.from(set);
 }
