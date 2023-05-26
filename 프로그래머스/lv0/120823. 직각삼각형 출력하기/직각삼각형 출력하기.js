@@ -1,0 +1,16 @@
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+let input = [];
+
+rl.on('line', function (line) {
+    input = line.split(' ');
+    for(let i=0; i<input;i++){
+        console.log('*'.repeat(i+1))
+    }
+}).on('close', function () {
+
+});
