@@ -1,7 +1,6 @@
 function solution(k, dungeons) {
     let answer = 0;
     let visited = Array(dungeons.length).fill(false);
-    let temp = 0;
     
     const dfs = (cnt, currentFatigue) => {
         for(let i=0; i<dungeons.length; i++){
