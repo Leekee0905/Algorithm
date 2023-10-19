@@ -6,3 +6,5 @@ for(let i=1; i<count; i++){
 }
 
 console.log(dp[count].toString())
+
+//js에선 큰 수를 해결하기 위해선 BigInt 객체를 사용해야한다!
