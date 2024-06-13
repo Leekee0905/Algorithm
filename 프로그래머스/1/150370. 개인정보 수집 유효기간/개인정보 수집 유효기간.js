@@ -4,6 +4,7 @@ function solution(today, terms, privacies) {
     terms.forEach((i) => {
         obj[i[0]] = parseInt(i.split(' ')[1]);
     });
+    
 
     const date = privacies.map(i => {
         let a = i.split(' ');
@@ -14,7 +15,7 @@ function solution(today, terms, privacies) {
         let a = i.split(' ');
         return a[1];
     });
-
+    
     for(let i = 0 ; i < reserve.length ; i++){
       date[i][1] = date[i][1] + obj[reserve[i]];
 
