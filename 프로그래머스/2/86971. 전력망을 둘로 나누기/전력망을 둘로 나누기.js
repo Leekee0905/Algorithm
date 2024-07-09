@@ -22,6 +22,7 @@ function solution(n, wires) {
             })
             count++;
         }
+
         return count;
     }
     
