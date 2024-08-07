@@ -1,4 +1,3 @@
 function solution(age) {
-    const date = new Date()
-    return date.getFullYear()-age;
+    return 2023-age;
 }
