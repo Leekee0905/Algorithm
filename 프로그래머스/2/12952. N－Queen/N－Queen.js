@@ -1,5 +1,5 @@
 const check = (queen, row) => {
-    for (let i = 0; i < row; i += 1) {
+    for (let i = 0; i < row; i ++) {
         if (queen[i] === queen[row] || Math.abs(queen[i] - queen[row]) === row - i) {
             return false;
         }
