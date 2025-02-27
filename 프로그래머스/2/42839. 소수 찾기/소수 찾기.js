@@ -1,13 +1,10 @@
 function isPrime(n) {
-  if (n < 2) return false;
-  if (n === 2) return true;
-  if (n % 2 === 0) return false;
-  
-  for (let i = 3; i * i <= n; i += 2) {
-    if (n % i === 0) return false;
-  }
-  
-  return true;
+    if (n < 2) return false;
+    if (n === 2) return true;
+    for (var i = 2; i <= Math.sqrt(n); i++) {
+        if (n%i===0) return false;
+    }
+    return true;
 }
 
 function generateNumbers(str, used, current, primeSet) {
@@ -26,7 +23,7 @@ function generateNumbers(str, used, current, primeSet) {
   }
 }
 
-// 주어진 문자열에서 소수 개수 찾기
+
 function solution(str) {
   const primeSet = new Set();
   generateNumbers(str.split(""), Array(str.length).fill(false), [], primeSet);
