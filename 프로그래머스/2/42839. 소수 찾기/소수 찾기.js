@@ -1,28 +1,40 @@
-function solution(numbers) {
-    let answer = new Set();
-    const arr = numbers.split("")
-    const isPrime = (num) => {
-        if(num === 1) return false;
-        for(let i = 2; i <= Math.sqrt(num); i++) {
-            if(num % i === 0) return false;
-        }
-        return true; 
-    }
-
-    const getNumber = (numbersArr, currentNumber) => {
-        if(numbersArr.length){
-            for(let i=0; i<numbersArr.length; i++){
-                const temp=[...numbersArr];
-                temp.splice(i,1);
-                if(isPrime(parseInt(currentNumber + numbersArr[i])) && parseInt(currentNumber + numbersArr[i]) !== 0){
-                    answer.add(parseInt(currentNumber + numbersArr[i]))
-                }
-                getNumber(temp,currentNumber + numbersArr[i])
-            }
-        }
-    }
-    getNumber(arr,'')
-
-    return answer.size;
+function isPrime(n) {
+  if (n < 2) return false;
+  if (n === 2) return true;
+  if (n % 2 === 0) return false;
+  
+  for (let i = 3; i * i <= n; i += 2) {
+    if (n % i === 0) return false;
+  }
+  
+  return true;
 }
 
+function generateNumbers(str, used, current, primeSet) {
+  if (current.length > 0) {
+    const num = Number(current.join(""));
+    primeSet.add(num);
+  }
+  for (let i = 0; i < str.length; i++) {
+    if (!used[i]) {
+      used[i] = true;
+      current.push(str[i]);
+      generateNumbers(str, used, current, primeSet);
+      current.pop();
+      used[i] = false;
+    }
+  }
+}
+
+// 주어진 문자열에서 소수 개수 찾기
+function solution(str) {
+  const primeSet = new Set();
+  generateNumbers(str.split(""), Array(str.length).fill(false), [], primeSet);
+
+  let count = 0;
+  for (const num of primeSet) {
+    if (isPrime(num)) count++;
+  }
+
+  return count;
+}
