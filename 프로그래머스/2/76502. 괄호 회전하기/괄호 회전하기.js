@@ -1,26 +1,29 @@
 function solution(s) {
-    var answer = 0;
-
-    for(let i=0; i<s.length; i++){
-        let turn = s.slice(i)+s.slice(0,i)
-        let stack = [];
-        for(const word of turn){
-            if(word === '(' || word=== '{' || word === '[')
-                stack.push(word)
-            else{
-                if(word === ')' && stack[stack.length-1] === '('){
-                    stack.pop()
-                }
-                if(word === '}' && stack[stack.length-1] === '{'){
-                    stack.pop()
-                }
-                if(word === ']' && stack[stack.length-1] === '['){
-                    stack.pop()
-                }
-            }
-        }
-        if(stack.length === 0)
-            answer++
+    let answer = 0;
+    const parentheses = {"(": ")","{":"}","[":"]"}
+    const newStr = s.split(""); 
+    if(newStr.every(e=>!Object.keys(parentheses).includes(e))){
+        return 0
     }
-    return s.length%2 === 0 ? answer : 0
+    const check = (str)=>{
+        let stack = []
+        for(let i=0; i<str.length; i++){
+            if(Object.keys(parentheses).includes(str[i])){
+                stack.push(str[i])
+            }
+            if(parentheses[stack.at(-1)] === str[i]){
+                stack.pop();
+            }
+            
+        }
+        if(stack.length === 0) return true
+    }
+    for(let i=0; i<s.length; i++){
+        const firstChar = newStr.shift(); 
+        newStr.push(firstChar)
+        if(check(newStr)){
+            answer++;
+        }
+    }
+    return answer
 }
